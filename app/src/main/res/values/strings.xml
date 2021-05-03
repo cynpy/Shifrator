@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Shifer</string>
+    <string-array name="shifr">
+        <item>Выбрать шифр Цезаря</item>
+        <item>Выбрать шифр Вижнера</item>
+
+    </string-array>
+</resources>
