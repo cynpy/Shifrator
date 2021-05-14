@@ -15,6 +15,9 @@
         <activity android:name=".Chezar_kod"/>
         <activity android:name=".Chezar_dekod"/>
         <activity android:name=".Vhisner_kod"/>
+        <activity android:name=".Data"/>
+        <activity android:name=".upravlenue"/>
+        <activity android:name=".watch"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

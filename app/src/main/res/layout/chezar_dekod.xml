@@ -6,18 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/save"
+        android:layout_width="224dp"
+        android:layout_height="75dp"
+        android:text="Сохранить в базу даных"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.914"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041" />
+
     <TextView
-        android:id="@+id/vivod"
-        android:layout_width="wrap_content"
-        android:layout_height="500dp"
+        android:id="@+id/Vivod"
+        android:layout_width="410dp"
+        android:layout_height="598dp"
+        android:layout_marginTop="106dp"
         android:textIsSelectable="true"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintTop_toTopOf="@+id/save" />
 
     <Button
         android:id="@+id/nazat"
