@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
@@ -22,7 +23,7 @@ public class Data extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data);
         Button nazat = findViewById(R.id.nazat);
-        Button next = findViewById(R.id.next);
+
         nazat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,13 +31,7 @@ public class Data extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Data.this, upravlenue.class);
-                startActivity(intent);
-            }
-        });
+
         DBHelper dbHelper;
         dbHelper = new DBHelper(this);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
@@ -44,10 +39,10 @@ public class Data extends AppCompatActivity {
         GridView gridView = findViewById(R.id.gridview);
 
         Cursor cursor = database.query(DBHelper.TABLE_CONST, null, null, null, null, null, null);
-
+        boolean create = false;
         ArrayList<String> data = null;
         if (cursor.moveToFirst()) {
-            boolean create = false;
+
             int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
             int shifernameIndex = cursor.getColumnIndex(DBHelper.KEY_NAMESHIFR);
             int shiferIndex = cursor.getColumnIndex(DBHelper.KEY_SHIFER);
@@ -66,14 +61,33 @@ public class Data extends AppCompatActivity {
                             + cursor.getString(vivodIndex));
                 }
             } while (cursor.moveToNext());
-            create = true;
+
+                create = true;
         }
         cursor.close();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+        if(!create){
+            data = new ArrayList<String>(Arrays.asList(""));
+        }
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
         gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Intent intent = new Intent(Data.this, upravlenue.class);
+
+
+                intent.putExtra("id", position+1);
+                startActivity(intent);
+            }
+        });
+    }
     }
 
-}
+
+
+
 
 
 

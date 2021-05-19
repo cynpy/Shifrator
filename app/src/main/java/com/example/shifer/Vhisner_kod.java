@@ -31,10 +31,21 @@ public class Vhisner_kod extends AppCompatActivity {
         String b = getIntent().getExtras().getString("b");
         final String b1 = b ;
         String rot = getIntent().getExtras().getString("rot");
+        char[]rot2=rot.toCharArray();
+        for(int i=0;i<rot2.length;i++) {
+            if (rot2[i] >='1'&&rot2[i] <='9'){
+                rot="а";
+            }
+        }
         shifer shifer = new  shifer();
         text= String.valueOf(shifer.vhisnerkod(b,rot));
         TextView texts = findViewById(R.id.Vivod);
         texts.setText(text);
+        for(int i=0;i<rot2.length;i++) {
+            if (rot2[i] >='1'&&rot2[i] <='9'){
+                texts.setText("Вы ввели ротр цифрами попробуйте еще");
+            }
+        }
         final String text1= text;
 
         final String rot1=rot;

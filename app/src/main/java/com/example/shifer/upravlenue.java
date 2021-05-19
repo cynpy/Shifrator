@@ -16,9 +16,11 @@ public class upravlenue extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upravlenuedata);
         DBHelper dbHelper;
+        int id;
         dbHelper = new DBHelper(this);
         final SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        boolean create=false;
 
         Button nazat = findViewById(R.id.nazat);
         nazat.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +35,7 @@ public class upravlenue extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText vod = findViewById(R.id.vod);
-                int id =  Integer.parseInt(String.valueOf(vod.getText()));
+                final int id= getIntent().getExtras().getInt("id");
                 database.delete(DBHelper.TABLE_CONST,DBHelper.KEY_ID + "=" + id,null);
             }
         });
@@ -43,8 +45,8 @@ public class upravlenue extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(upravlenue.this, watch.class);
                 EditText vod = findViewById(R.id.vod);
-                int id =  Integer.parseInt(String.valueOf(vod.getText()));
-                intent.putExtra("id", id);
+                final int id= getIntent().getExtras().getInt("id");
+                        intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

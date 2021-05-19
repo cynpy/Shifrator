@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static  final int DATABAZE_VERSION=2;
+    public static  final int DATABAZE_VERSION=3;
     public static  final String DATABAZE_NAME="Shifer";
     public static  final String TABLE_CONST="Shifer";
 

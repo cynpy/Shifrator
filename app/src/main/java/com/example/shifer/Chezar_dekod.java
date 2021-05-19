@@ -28,15 +28,28 @@ public class Chezar_dekod  extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         int rot=1;
         String rots = getIntent().getExtras().getString("rot");
+        char[] rot3=rots.toCharArray();
+
+
         String text="";
         String b = getIntent().getExtras().getString("b");
         final String b1 = b ;
-        rot = Integer.parseInt(rots);
+       for(int i=0;i<rot3.length;i++) {
+            if (!(rot3[i] >='1'&&rot3[i] <='9')){
+                rot=1;
+            }else  rot = Integer.parseInt(rots);
+        }
+
+
         shifer shifer = new  shifer();
         text = String.valueOf(shifer.chezardekod(b,rot));
         TextView texts = findViewById(R.id.Vivod);
         texts.setText(text);
-
+        for(int i=0;i>rot3.length;i++) {
+            if(!(rot3[i] >='1'&&rot3[i] <='9')){
+                texts.setText("Вы ввели ротр буквами попробуйте еще");
+            }
+        }
         final String rots1=rots;
         final String text1= text;
 

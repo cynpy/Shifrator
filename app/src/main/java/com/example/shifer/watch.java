@@ -1,10 +1,13 @@
 package com.example.shifer;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,14 +21,21 @@ public class watch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.watch);
-        int id = getIntent().getExtras().getInt("id");
+        final int id = getIntent().getExtras().getInt("id");
         DBHelper dbHelper;
         dbHelper = new DBHelper(this);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         Cursor cursor = database.query(DBHelper.TABLE_CONST,null,null,null,null,null,null);
-
-
+        Button nazat = findViewById(R.id.nazat);
+        nazat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(watch.this, upravlenue.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
 
         if(cursor.moveToFirst()){
             for(int i=1;i!=id;i++){

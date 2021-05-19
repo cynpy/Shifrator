@@ -31,14 +31,27 @@ public class Chezar_kod extends AppCompatActivity {
 
 
              String rots = getIntent().getExtras().getString("rot");
+
             String text="";
              String b = getIntent().getExtras().getString("b");
              final String b1 = b ;
-            rot = Integer.parseInt(rots);
+            ;
+            char[] rot3=rots.toCharArray();
+            for(int i=0;i<rot3.length;i++) {
+            if (!(rot3[i] >='1'&&rot3[i] <='9')){
+                rot=1;
+            }else rot = Integer.parseInt(rots);
+        }
+
             shifer shifer = new  shifer();
             text = String.valueOf(shifer.chezarkod(b,rot));
             TextView texts = findViewById(R.id.Vivod);
-            texts.setText(text);
+
+        for(int i=0;i<rot3.length;i++) {
+            if (!(rot3[i] >='1'&&rot3[i] <='9')){
+                texts.setText("Вы ввели ротр буквами попробуйте еще");
+            }else  texts.setText(text);
+        }
 
         final String rots1=rots;
         final String text1 = text;
